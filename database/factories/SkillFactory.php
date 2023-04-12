@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Skill;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,11 @@ class SkillFactory extends Factory
      */
     public function definition(): array
     {
+        $color = $this->faker->randomElement(Skill::getAvailableBackgroundColors());
+
         return [
-            //
+            'name' => fake()->unique()->word(),
+            'color' => $color,
         ];
     }
 }
